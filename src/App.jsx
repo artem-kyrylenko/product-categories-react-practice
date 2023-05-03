@@ -71,7 +71,7 @@ export const App = () => {
                   className={classNames({
                     'is-active': selectedUserId === user.id,
                   })}
-                  onClick={handleQuery}
+                  onClick={() => setSelectedUserId(user.id)}
                   key={user.id}
                 >
                   {user.name}
@@ -87,7 +87,7 @@ export const App = () => {
                   className="input"
                   placeholder="Search"
                   value={query}
-                  onChange={event => setQuery(event.target.value)}
+                  onChange={event => handleQuery(event)}
                 />
 
                 <span className="icon is-left">
@@ -154,7 +154,7 @@ export const App = () => {
                 data-cy="ResetAllButton"
                 href="#/"
                 className="button is-link is-outlined is-fullwidth"
-                onClick={resetAllFilters}
+                onClick={event => resetAllFilters(event)}
               >
                 Reset all filters
               </a>
