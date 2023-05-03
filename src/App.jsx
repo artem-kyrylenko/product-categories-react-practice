@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-
+import classNames from 'classnames';
 import usersFromServer from './api/users';
 import categoriesFromServer from './api/categories';
 import productsFromServer from './api/products';
@@ -214,7 +214,10 @@ export const App = () => (
 
                 <td
                   data-cy="ProductUser"
-                  className="has-text-link"
+                  className={classNames({
+                    'has-text-link': product.user.sex === 'm',
+                    'has-text-danger': product.user.sex === 'f',
+                  })}
                 >
                   {product.user.name}
                 </td>
