@@ -35,6 +35,15 @@ export const App = () => {
     return isUserIdMatch && isQueryMatch;
   });
 
+  const handleQuery = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const resetAllFilters = () => {
+    setQuery('');
+    setSelectedUserId(0);
+  };
+
   return (
     <div className="section">
       <div className="container">
@@ -62,7 +71,7 @@ export const App = () => {
                   className={classNames({
                     'is-active': selectedUserId === user.id,
                   })}
-                  onClick={() => setSelectedUserId(user.id)}
+                  onClick={handleQuery}
                   key={user.id}
                 >
                   {user.name}
@@ -145,6 +154,7 @@ export const App = () => {
                 data-cy="ResetAllButton"
                 href="#/"
                 className="button is-link is-outlined is-fullwidth"
+                onClick={resetAllFilters}
               >
                 Reset all filters
               </a>
